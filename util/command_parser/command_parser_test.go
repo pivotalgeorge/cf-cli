@@ -14,11 +14,14 @@ import (
 
 var _ = Describe("Command 'Parser'", func() {
 	var (
-		pluginUI *ui.UI
+		pluginUI   *ui.UI
+		fakeConfig *commandfakes.FakeConfig
+		v3Config   *configv3.Config
 	)
 	BeforeEach(func() {
 		var err error
-		fakeConfig := new(commandfakes.FakeConfig)
+		fakeConfig = new(commandfakes.FakeConfig)
+		v3Config = new(configv3.Config)
 		pluginUI, err = ui.NewPluginUI(fakeConfig, ioutil.Discard, ioutil.Discard)
 		Expect(err).ToNot(HaveOccurred())
 	})
@@ -30,7 +33,7 @@ var _ = Describe("Command 'Parser'", func() {
 		)
 
 		BeforeEach(func() {
-			parser, newErr := command_parser.NewCommandParser()
+			parser, newErr := command_parser.NewCommandParser(v3Config)
 			Expect(newErr).ToNot(HaveOccurred())
 			exitCode, err = parser.ParseCommandFromArgs(pluginUI, []string{"howdy"})
 		})
@@ -52,7 +55,7 @@ var _ = Describe("Command 'Parser'", func() {
 			common.Commands.VerboseOrVersion = false
 			var err error
 
-			parser, err = command_parser.NewCommandParser()
+			parser, err = command_parser.NewCommandParser(v3Config)
 			Expect(err).ToNot(HaveOccurred())
 		})
 
