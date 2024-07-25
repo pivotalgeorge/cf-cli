@@ -5,7 +5,6 @@ package constant
 type DeploymentState string
 
 const (
-	// DeploymentDeploying means the deployment is in state 'DEPLOYING'
 	DeploymentDeploying DeploymentState = "DEPLOYING"
 
 	// DeploymentCanceled means the deployment is in state 'CANCELED'
@@ -16,12 +15,8 @@ const (
 
 	// DeploymentCanceling means the deployment is in state 'CANCELING'
 	DeploymentCanceling DeploymentState = "CANCELING"
-
-	// DeploymentFailing means the deployment is in state 'FAILING'
-	DeploymentFailing DeploymentState = "FAILING"
-
-	// DeploymentFailed means the deployment is in state 'FAILED'
-	DeploymentFailed DeploymentState = "FAILED"
+	DeploymentFailing   DeploymentState = "FAILING"
+	DeploymentFailed    DeploymentState = "FAILED"
 )
 
 // DeploymentStatusReason describes the status reasons a deployment can have
@@ -51,15 +46,9 @@ const (
 	DeploymentStatusReasonPaused DeploymentStatusReason = "PAUSED"
 )
 
-// DeploymentStatusValue describes the status values a deployment can have
 type DeploymentStatusValue string
 
 const (
-	// DeploymentStatusValueActive means the deployment's status.value is
-	// 'ACTIVE'
-	DeploymentStatusValueActive DeploymentStatusValue = "ACTIVE"
-
-	// DeploymentStatusValueFinalized means the deployment's status.value is
-	// 'FINALIZED'
+	DeploymentStatusValueActive    DeploymentStatusValue = "ACTIVE"
 	DeploymentStatusValueFinalized DeploymentStatusValue = "FINALIZED"
 )
