@@ -12,7 +12,7 @@ import (
 )
 
 var _ = Describe("help", func() {
-	When("--help flag is set", func() {
+	FWhen("--help flag is set", func() {
 		It("Displays command usage to output", func() {
 			session := helpers.CF(PushCommandName, "--help")
 			Eventually(session).Should(Say("NAME:"))
@@ -91,6 +91,7 @@ var _ = Describe("help", func() {
 			Eventually(session).Should(Say(`--stack, -s`))
 			Eventually(session).Should(Say(`--start-command, -c`))
 			Eventually(session).Should(Say(`--strategy`))
+			Eventually(session).Should(Say(`--max-in-flight`))
 			Eventually(session).Should(Say(`--task`))
 			Eventually(session).Should(Say(`--var`))
 			Eventually(session).Should(Say(`--vars-file`))
